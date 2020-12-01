@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      PHP Javascript Tracking Demo
+    </title>
+    <style>
+    #map {
+      width: 100%;
+      height: 300px;
+      background: #f2f2f2;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtFngZ2C4ID0c_P3pvBcyszj5SVq8Xc0s&callback=myMap"></script>
+    -->
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <script>
+        /*
+  var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 15,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+var marker = null;
+
+function autoUpdate() {
+  navigator.geolocation.getCurrentPosition(function(position) {  
+    var newPoint = new google.maps.LatLng(position.coords.latitude, 
+                                          position.coords.longitude);
+
+    if (marker) {
+      // Marker already created - Move it
+      marker.setPosition(newPoint);
+    }
+    else {
+      // Marker does not exist - Create it
+      marker = new google.maps.Marker({
+        position: newPoint,
+        map: map
+      });
+    }
+
+    // Center the map on the new position
+    map.setCenter(newPoint);
+  }); 
+
+  // Call the autoUpdate() function every 5 seconds
+  setTimeout(autoUpdate, 5000);
+}
+*/
+
+$(document).ready(function () {
+  //  autoUpdate();
+  //const initialPosition = { lat: 59.325, lng: 18.069 };
+
+/*
+const map = new google.maps.Map(document.getElementById('map'), {
+  center: initialPosition,
+  zoom: 15
+});
+*/
+    });
+
+
+    document.onreadystatechange = () => {
+     if(document.readyState === "complete"){
+        autoupdate();
+     }
+   }
+
+function autoupdate(){
+    //alert("Prueba");
+    map = new Microsoft.Maps.Map(document.getElementById('map'), {credentials: 'AleP1oT0vi110v8l1H1_vhdPrRR9Vh0wrBzXiOPl7EqGQtscKU2m9lvVKsFGrdwv'});
+    map.setView({ zoom: 18, center: new Microsoft.Maps.Location(-11.9876429, -77.0909696) });  
+
+var center = map.getCenter();
+
+
+var pin = new Microsoft.Maps.Pushpin(center, {
+            title: 'Localizacion',
+            subTitle: 'Central',
+            text: '1'
+        });
+
+        //Add the pushpin to the map
+        map.entities.push(pin);
+
+        setTimeout(autoupdate, 5000);
+
+}
+
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
